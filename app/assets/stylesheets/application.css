@@ -1,0 +1,82 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ .nav {
+   background-color: gray;
+   position: fixed;
+   top: 0;
+   width: 100%;
+ }
+
+
+
+ .nav ul {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+     background-color: gray;
+ }
+
+ .nav li {
+     float: right;
+ }
+
+ .nav-title {
+   float: left;
+   display: block;
+   color: white;
+   font-family: 'Bellefair', serif;
+   font-size: 1.55em;
+   padding-top: 8px;
+   margin-bottom: -3px;
+   padding-left: 10px;
+   text-align: center;
+   letter-spacing: 5px;
+ }
+
+ .nav li a {
+   font-family: 'Bellefair', serif;
+   font-size: 1.3em;
+     display: block;
+     color: white;
+     background-color: gray;
+     text-align: center;
+     height: 100%;
+     text-decoration: none;
+ }
+
+ .nav li a:hover:not(.active) {
+     background-color: #111;
+ }
+
+ .active {
+     background-color: #4CAF50;
+ }
+
+.title  {
+  margin-top: 70px;
+  text-align: center;
+  font-family: 'Bellefair', serif;
+}
+
+.pagination  {
+  font-family: Helvetica;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+}

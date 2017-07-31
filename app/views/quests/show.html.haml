@@ -1,0 +1,15 @@
+%p.show
+  %strong Title:
+  = @quest.title
+%p.show
+  %strong Body:
+  = @quest.body
+-# %h2 Comments
+-# = render @article.comments
+-# %h2 Add a comment:
+-# = render 'comments/form'
+
+-# - if @book.user == current_user
+= link_to 'Edit this question', edit_quest_path(@quest), :class => "btn btn-primary"
+%br
+= link_to 'Back', quests_path, :class => "btn btn-primary"
