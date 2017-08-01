@@ -1,5 +1,5 @@
 %h1.title.jumbotron Stack Joverflow Questions and Maybe Answers Repository
-= link_to 'Ask ya damn question!', new_quest_path, :class => "btn btn-success btn-block"
+= link_to 'Ask ya damn question!', new_quest_path, :class => "btn btn-primary btn-block"
 %br
 = paginate @quests
 %br
@@ -13,21 +13,22 @@
       %td= quest.title
       %td= markdown(quest.body)
       %td= link_to 'Show', quest_path(quest), :class => 'btn btn-info'
-      -# - if book.user == current_user
-      %td= link_to 'Edit', edit_quest_path(quest), :class => 'btn btn-info'
-      %td= link_to 'Delete', quest_path(quest), :class => 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this question?' }
+      %td= link_to 'Answer', new_ans_path(quest), :class => 'btn btn-info'
+      - if quest.user == current_user
+        %td= link_to 'Edit', edit_quest_path(quest), :class => 'btn btn-info'
+        %td= link_to 'Delete', quest_path(quest), :class => 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this question?' }
       %td Last changed #{time_ago_in_words quest.updated_at} ago
-
-%br
-
+= paginate @quests
 
 
--# - if current_user
--#   %span.status Signed in as #{current_user.username}
--#   %br
--#   #{link_to "Logout", '/logout', :class => "status"}
--# - else
--#   = link_to 'Login', '/login', :class => "status"
--#   %br
--#   #{link_to 'Signup', '/signup', :class => "status"}
--# = yield
+
+
+- if current_user
+  %span.status Signed in as #{current_user.username}
+  %br
+  #{link_to "Logout", '/logout', :class => "status"}
+- else
+  = link_to 'Login', '/login', :class => "status"
+  %br
+  #{link_to 'Signup', '/signup', :class => "status"}
+= yield

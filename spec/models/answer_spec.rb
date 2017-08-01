@@ -1,19 +1,17 @@
 # == Schema Information
 #
-# Table name: quests
+# Table name: answers
 #
 #  id         :integer          not null, primary key
-#  title      :string
 #  body       :text
+#  user_id    :integer
+#  quest_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer
 #
 
-require 'test_helper'
+require 'rails_helper'
 
-class QuestTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+RSpec.describe Answer, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

@@ -21,8 +21,6 @@
    width: 100%;
  }
 
-
-
  .nav ul {
      list-style-type: none;
      margin: 0;
@@ -73,10 +71,30 @@
   font-family: 'Bellefair', serif;
 }
 
+.new-title, .edit-title, .show-title, .signup-title, .login-title  {
+  margin-top: 70px;
+}
+
+#quest_title {
+  width: 700px;
+}
+
+textarea {
+  width: 700px;
+  height: 150px;
+}
+
 .pagination  {
   font-family: Helvetica;
   text-decoration: none;
-  display: inline-block;
-  text-align: center;
+  display: block;
   margin: 0 auto;
+}
+
+.container  {
+}
+
+.backbutton {
+  float: right;
+  bottom: 10px;
 }

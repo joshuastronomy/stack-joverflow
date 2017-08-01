@@ -1,19 +1,16 @@
 # == Schema Information
 #
-# Table name: quests
+# Table name: answers
 #
 #  id         :integer          not null, primary key
-#  title      :string
 #  body       :text
+#  user_id    :integer
+#  quest_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer
 #
 
-require 'test_helper'
-
-class QuestTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class Answer < ApplicationRecord
+  belongs_to :user
+  belongs_to :quest
 end

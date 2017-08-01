@@ -1,9 +1,14 @@
-%p.show
+%p.show.show-title
   %strong Title:
   = @quest.title
 %p.show
   %strong Body:
   = @quest.body
+%p.show
+  %h3 Answers
+  - @answers.each do |ans|
+    %li= ans.body
+
 -# %h2 Comments
 -# = render @article.comments
 -# %h2 Add a comment:
@@ -11,5 +16,5 @@
 
 -# - if @book.user == current_user
 = link_to 'Edit this question', edit_quest_path(@quest), :class => "btn btn-primary"
-%br
-= link_to 'Back', quests_path, :class => "btn btn-primary"
+
+= link_to 'Back', quests_path, :class => "btn btn-primary backbutton"

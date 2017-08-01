@@ -1,11 +1,16 @@
 class QuestsController < ApplicationController
 
+before_action :authorize, only: [:new, :create, :edit, :update, :destroy]
+before_action :my_quest, only: [:edit, :update, :destroy]
+
+
   def index
     @quests = Quest.page(params[:page]).per(5)
   end
 
   def show
-    @quest = Quest.find(params[:id])
+    @quest = Quest.find(params[:q_id])
+    @answers = Answer.where(quest_id: @quest.id)
   end
 
   def new
@@ -14,6 +19,8 @@ class QuestsController < ApplicationController
 
   def create
     @quest = Quest.new(quest_params)
+    @quest.user = current_user
+
     if @quest.save
       redirect_to @quest
     else
@@ -22,11 +29,11 @@ class QuestsController < ApplicationController
   end
 
   def edit
-    @quest = Quest.find(params[:id])
+    @quest = Quest.find(params[:q_id])
   end
 
   def update
-    @quest = Quest.find(params[:id])
+    @quest = Quest.find(params[:q_id])
     if @quest.update(quest_params)
       redirect_to @quest
     else
@@ -36,13 +43,13 @@ class QuestsController < ApplicationController
   end
 
   def destroy
-    @quest = Quest.find(params[:id])
+    @quest = Quest.find(params[:q_id])
     @quest.destroy!
 
     redirect_to quests_path
   end
 
   def quest_params
-    params.require(:quest).permit(:title, :body)
+    params.require(:quest).permit(:title, :body, :user_id)
   end
 end
