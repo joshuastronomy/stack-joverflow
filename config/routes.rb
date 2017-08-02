@@ -40,35 +40,26 @@ Rails.application.routes.draw do
     resources :answers
   end
 
-
-  # get 'answers/edit'
-  #
-  # get 'answers/update'
-
-  # get 'sessions/new'
-  # post 'sessions/create'
-  #
-  # resources :users
-  # get 'users/show'
-  # get 'users/new'
-  # get 'users/edit'
-  # post 'users/create'
-  # post ' users/update'
-  #
-  # get 'quests/new'
-  # get 'quests/edit'
-  # get 'quests/show'
-  # post 'quests/create'
-  # post 'quests/update'
+  # namespace :api do
+  #     namespace :v1 do
+  #       resources :sessions, only: [:create, :show]
+  #       resources :users, only: [:index, :create, :show, :update, :destroy] do
+  #         quests :activate, on: :collection
+  #         resources :followers, only: [:index, :destroy]
+  #         resources :followings, only: [:index, :destroy] do
+  #           post :create, on: :member
+  #         end
+  #         resource :feed, only: [:show]
+  #       end
+  #       resources :microposts, only: [:index, :create, :show, :update, :destroy]
+  #     end
+  #   end
 
 get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'
 get '/logout' => 'sessions#destroy'
 
-#These routes are for displaying the signup form and storing the user in the database.
-
 get '/signup' => 'users#new'
 post '/users' => 'users#create'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
