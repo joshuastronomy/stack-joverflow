@@ -5,18 +5,39 @@
     %title StackJoverflow
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application'
     %link{:href => "https://fonts.googleapis.com/css?family=Bellefair", :rel => "stylesheet"}/
+    %link{:href => "https://fonts.googleapis.com/css?family=Open+Sans", :rel => "stylesheet"}
+    %link{:href => "https://fonts.googleapis.com/css?family=Lato", :rel => "stylesheet"}
+
+
     %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :integrity => "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", :rel => "stylesheet"}/
   %body
   .nav
     %p.nav-title SJQMAR
+    %span.flash-span
 
-    %li
-      %a{:href => "/quests"} Questions
-    %li
-      %a{:href => "/login"} Login
-    %li
-      %a{:href => "/signup"} Signup
+
+
+
+    - if !current_user
+      %li
+        %a{:href => "/login"} Login
+      %li
+        %a{:href => "/signup"} Signup
+      %li
+        %a{:href => "/quests"} Questions
+
+    - else
+      %li
+        %a{:href => "/logout"} Logout
+      %span.loggedin Logged in as #{current_user.username}
+      %li
+        %a{:href => "/quests"} Questions
+
+
+
+
+  -# = flash_messages
   .container
     = yield

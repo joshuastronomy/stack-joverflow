@@ -9,7 +9,7 @@ before_action :my_quest, only: [:edit, :update, :destroy]
   end
 
   def show
-    @quest = Quest.find(params[:q_id])
+    @quest = Quest.find(params[:id])
     @answers = Answer.where(quest_id: @quest.id)
   end
 
@@ -29,11 +29,11 @@ before_action :my_quest, only: [:edit, :update, :destroy]
   end
 
   def edit
-    @quest = Quest.find(params[:q_id])
+    @quest = Quest.find(params[:id])
   end
 
   def update
-    @quest = Quest.find(params[:q_id])
+    @quest = Quest.find(params[:id])
     if @quest.update(quest_params)
       redirect_to @quest
     else
@@ -43,11 +43,13 @@ before_action :my_quest, only: [:edit, :update, :destroy]
   end
 
   def destroy
-    @quest = Quest.find(params[:q_id])
+    @quest = Quest.find(params[:id])
     @quest.destroy!
 
     redirect_to quests_path
   end
+
+private
 
   def quest_params
     params.require(:quest).permit(:title, :body, :user_id)

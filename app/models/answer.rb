@@ -8,6 +8,7 @@
 #  quest_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  accepted   :boolean          default(FALSE)
 #
 
 class Answer < ApplicationRecord

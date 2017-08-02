@@ -1,5 +1,5 @@
-%h1 Answering
-= form_for @answer, url: new_ans_path(params[:q_id]) do |f|
+%h1.ans_title Answering
+= form_for @answer, url: quest_answers_path(params[:quest_id]) do |f|
   - if @answer.errors.any?
     #error_explanation
       %h2

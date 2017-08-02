@@ -34,14 +34,12 @@
 
 Rails.application.routes.draw do
 
-  get 'quests' => 'quests#index'
-  get 'quests/:q_id' => "quests#show"
+  root 'quests#index'
 
-  get 'quests/:q_id/answers/new' => "answers#new", as: :new_ans
-  post 'quests/:q_id/answers/new' => "answers#create"
+  resources :quests do
+    resources :answers
+  end
 
-
-    resources :answers, except: [:new, :create, :index]
 
   # get 'answers/edit'
   #
@@ -62,11 +60,6 @@ Rails.application.routes.draw do
   # get 'quests/show'
   # post 'quests/create'
   # post 'quests/update'
-
-  get 'quests/index'
-    resources :quests
-
-  root 'quests#index'
 
 get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'

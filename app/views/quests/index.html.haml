@@ -9,11 +9,11 @@
     %th.tabhead Body
 
   - @quests.each do |quest|
-    %tr
+    %tr.quest-card
       %td= quest.title
       %td= markdown(quest.body)
       %td= link_to 'Show', quest_path(quest), :class => 'btn btn-info'
-      %td= link_to 'Answer', new_ans_path(quest), :class => 'btn btn-info'
+      %td= link_to 'Answer', new_quest_answer_path(quest), :class => 'btn btn-info'
       - if quest.user == current_user
         %td= link_to 'Edit', edit_quest_path(quest), :class => 'btn btn-info'
         %td= link_to 'Delete', quest_path(quest), :class => 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this question?' }
